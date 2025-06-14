@@ -22,16 +22,21 @@ CREATE TABLE users (
 -- Create table "roles"
 
 CREATE TABLE roles (
-    role_id INTEGER PRIMARY KEY DEFAULT,
+    role_id INTEGER PRIMARY KEY,
     role_tag VARCHAR(63) NOT NULL,
     role_title VARCHAR(63) NOT NULL
 );
+
+-- Add role User
+
+
 
 -- Create table "books"
 
 CREATE TABLE books (
     book_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
     book_heading VARCHAR(127) NOT NULL,
+    book_tag VARCHAR(127) NOT NULL,
     book_author VARCHAR(255) NOT NULL,
     book_publisher uuid,
     book_category uuid,
@@ -50,8 +55,38 @@ CREATE TABLE books (
 
 -- Create table "users-books"
 
+CREATE TABLE users_books (
+    ub_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+    ub_user_email VARCHAR(255),
+    ub_book_tag VARCHAR(127),
+    FOREIGN KEY (ub_user_email) REFERENCES users (user_email),
+    FOREIGN KEY (ub_book_tag) REFERENCES books (book_tag)
+);
+
 -- Create table "authors-books"
+
+CREATE TABLE authors_books (
+    ab_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+    ab_user_email VARCHAR(255),
+    ab_book_tag VARCHAR(255),
+    FOREIGN KEY (ab_user_email) REFERENCES users (user_email),
+    FOREIGN KEY (ab_book_tag) REFERENCES books (book_tag)
+);
 
 -- Create table "categories"
 
+CREATE TABLE categories (
+    cat_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+    cat_title VARCHAR(127) NOT NULL,
+    cat_tag VARCHAR(127) NOT NULL
+);
+
 -- Create table "themes"
+
+CREATE TABLE themes (
+    theme_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+    theme_title VARCHAR(127) NOT NULL,
+    theme_tag VARCHAR(127) NOT NULL,
+    theme_cat VARCHAR(127),
+    FOREIGN KEY (theme_cat) REFERENCES categories (cat_tag)
+);
