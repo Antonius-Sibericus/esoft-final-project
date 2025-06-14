@@ -1,6 +1,6 @@
 import pool from "../database.js"
 
-class UsersModel {
+export default class UsersModel {
     static async getAllUsers() {
         const allUsers = await pool.query(
             "SELECT * FROM users",
@@ -56,5 +56,3 @@ class UsersModel {
         return deletedUser
     }
 }
-
-export default UsersModel
