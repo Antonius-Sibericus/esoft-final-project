@@ -7,6 +7,7 @@ import categoriesRouter from "./src/routers/categories.router.js"
 import themesRouter from "./src/routers/themes.router.js"
 import booksRouter from "./src/routers/books.router.js"
 import favoritesRouter from "./src/routers/favorites.router.js"
+import publishedRouter from "./src/routers/published.router.js"
 
 const app = express()
 const PORT = process.env.PORT || 8080
@@ -20,5 +21,6 @@ app.use("/categories", categoriesRouter)
 app.use("/themes", themesRouter)
 app.use("/books", booksRouter)
 app.use("/favorites", favoritesRouter)
+app.use("/published", publishedRouter)
 
 app.listen(PORT, () => console.log(`Server works on port ${PORT}`))

@@ -6,6 +6,6 @@ const router = express.Router()
 
 router.get("/", authMiddleware, FavoritesController.getFavorites)
 router.post("/", authMiddleware, FavoritesController.addFavorite)
-router.delete("/:id", authMiddleware, FavoritesController.removerFavorite)
+router.delete("/:id", authMiddleware, FavoritesController.removeFavorite)
 
 export default router

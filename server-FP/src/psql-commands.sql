@@ -79,7 +79,7 @@ CREATE TABLE favorites (
 
 -- Create table "authors-books"
 
-CREATE TABLE publishers_books (
+CREATE TABLE published (
     ab_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
     ab_user_email VARCHAR(255),
     ab_book_tag VARCHAR(255),
