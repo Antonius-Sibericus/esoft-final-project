@@ -10,7 +10,7 @@ export default class FavoritesController {
             try {
                 const user = await UsersModel.getUserById(userId)
 
-                if (!user || user.rows.length === 0 || user.rows[0].user_email) {
+                if (!user || user.rows.length === 0 || !user.rows[0].user_email) {
                     return res.status(500).json({ error: true, message: "Пользователь не найден" })
                 }
 
@@ -20,7 +20,7 @@ export default class FavoritesController {
                     return res.status(500).json({ error: true, message: "Не удалось получить избранное" })
                 }
 
-                return res.status(200).json({ error: false, message: "Избранное успешно получено", favorites: allFavorites })
+                return res.status(200).json({ error: false, message: "Избранное успешно получено", favorites: allFavorites.rows })
             } catch (err) {
                 console.error(err.message)
                 return res.status(500).json({ error: true, message: "Ошибка на сервере, get favorites" })
@@ -52,7 +52,7 @@ export default class FavoritesController {
                     tag: bookTag
                 }
 
-                const addedFavorite = await FavoritesModel.addFavorite(favoriteValues)
+                const addedFavorite = await FavoritesModel.pushFavorite(favoriteValues)
 
                 if (!addedFavorite || addedFavorite.rows.length === 0) {
                     return res.status(500).json({ error: true, message: "Не удалось добавить в избранное" })

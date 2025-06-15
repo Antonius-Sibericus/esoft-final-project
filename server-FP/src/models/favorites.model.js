@@ -20,10 +20,10 @@ export default class FavoritesModel {
         return pushedFavorite
     }
 
-    static async removeFavorite() {
+    static async removeFavorite(favoriteValues) {
         const { email, tag } = favoriteValues
         const removedFavorite = await pool.query(
-            "DELETE FROM favorites WHERE ub_user_email = $1 AND ub_book_tag = $2",
+            "DELETE FROM favorites WHERE ub_user_email = $1 AND ub_book_tag = $2 RETURNING *",
             [email, tag]
         )
 
