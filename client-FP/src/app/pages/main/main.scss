@@ -1,0 +1,36 @@
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/mixins";
+
+.main {
+    background-image: url("../../../assets/images/page/main.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 50px;
+    padding-bottom: 200px;
+
+    .container {
+        .main-title {
+            font-family: "Lora", serif;
+            font-weight: 500;
+            font-size: 60px;
+            line-height: 130%;
+            color: $lazurite-heading-color;
+            background-color: rgba(255, 255, 255, 0.60);
+            margin-bottom: 30px;
+            padding-left: 18px;
+        }
+        
+        .main-text {
+            padding-left: 18px;
+            font-size: 24px;
+            line-height: 180%;
+            // color: rgb(255, 255, 255);
+            // color: white;
+            font-weight: 500;
+            color: $lazurite-heading-color;
+            background-color: rgba(255, 255, 255, 0.60);
+            max-width: 100%;
+            // max-width: 600px;
+        }
+    }
+}

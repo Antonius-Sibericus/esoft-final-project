@@ -35,7 +35,7 @@ body {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 18px;
-    color: $green-text-color;
+    color: $blue-text-color;
 }
 
 .button {
@@ -54,7 +54,7 @@ body {
     &.button-transparent {
         background-color: transparent;
         border: 1px solid #6cac72;
-        color: $green-text-color;
+        color: $blue-text-color;
     }
 
     &.button-icon {
